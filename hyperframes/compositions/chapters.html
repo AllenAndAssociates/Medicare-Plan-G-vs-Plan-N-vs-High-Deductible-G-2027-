@@ -1,0 +1,147 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      pointer-events: none;
+    }
+    #ch-brand {
+      position: absolute;
+      left: 940px;
+      top: 64px;
+      width: 788px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: #a9b4c8;
+    }
+    #ch-brand b {
+      color: #d4af5a;
+    }
+    #ch-tabs {
+      position: absolute;
+      left: 940px;
+      top: 110px;
+      width: 788px;
+      height: 52px;
+      display: flex;
+      gap: 8px;
+    }
+    .ch-tab {
+      position: relative;
+      flex: 1;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #7f8aa0;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      overflow: hidden;
+    }
+    .ch-num {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: #c9d1df;
+    }
+    .ch-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #d4af5a, #b8913a);
+      opacity: 0;
+    }
+    .ch-label,
+    .ch-num {
+      position: relative;
+    }
+    .ch-label-on {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #0b1a33;
+      opacity: 0;
+    }
+    .ch-label-on .ch-num {
+      background: rgba(11, 26, 51, 0.85);
+      color: #d4af5a;
+    }
+  </style>
+  <div id="root" data-composition-id="chapters" data-width="1920" data-height="1080">
+    <div id="ch-brand">
+      <span><b>Allen &amp; Associates</b> &nbsp;·&nbsp; Plain-English Medicare</span>
+      <span>2027 Medigap Guide</span>
+    </div>
+    <div id="ch-tabs">
+      <div class="ch-tab" id="ch-t1">
+        <span class="ch-num">1</span><span class="ch-label">Shared Freedom</span>
+        <div class="ch-fill" id="ch-f1"></div>
+        <div class="ch-label-on" id="ch-o1"><span class="ch-num">1</span>Shared Freedom</div>
+      </div>
+      <div class="ch-tab" id="ch-t2">
+        <span class="ch-num">2</span><span class="ch-label">Plan G vs N</span>
+        <div class="ch-fill" id="ch-f2"></div>
+        <div class="ch-label-on" id="ch-o2"><span class="ch-num">2</span>Plan G vs N</div>
+      </div>
+      <div class="ch-tab" id="ch-t3">
+        <span class="ch-num">3</span><span class="ch-label">High-Ded G</span>
+        <div class="ch-fill" id="ch-f3"></div>
+        <div class="ch-label-on" id="ch-o3"><span class="ch-num">3</span>High-Ded G</div>
+      </div>
+      <div class="ch-tab" id="ch-t4">
+        <span class="ch-num">4</span><span class="ch-label">Carrier Myth</span>
+        <div class="ch-fill" id="ch-f4"></div>
+        <div class="ch-label-on" id="ch-o4"><span class="ch-num">4</span>Carrier Myth</div>
+      </div>
+      <div class="ch-tab" id="ch-t5">
+        <span class="ch-num">5</span><span class="ch-label">Action Plan</span>
+        <div class="ch-fill" id="ch-f5"></div>
+        <div class="ch-label-on" id="ch-o5"><span class="ch-num">5</span>Action Plan</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Brand strip and tab rail arrive with the hook, tabs stay idle until Chapter 1.
+      tl.fromTo("#ch-brand", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+      tl.fromTo("#ch-tabs", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.35);
+
+      // Chapter activation times = first word of each chapter in the VO.
+      const on = [38.46, 69.84, 132.34, 187.52, 218.42];
+      on.forEach((t, i) => {
+        const n = i + 1;
+        tl.fromTo("#ch-f" + n, { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "power3.out", transformOrigin: "0% 50%" }, t);
+        tl.fromTo("#ch-o" + n, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, t + 0.1);
+        tl.fromTo("#ch-t" + n, { scale: 1 }, { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, t);
+        if (i > 0) {
+          // previous chapter goes to a "done" state: dimmer gold
+          tl.to("#ch-f" + i, { opacity: 0.28, duration: 0.35, ease: "power2.inOut" }, t);
+          tl.to("#ch-o" + i, { opacity: 0, duration: 0.35, ease: "power2.inOut" }, t);
+        }
+      });
+      tl.set({}, {}, 250.2);
+      window.__timelines["chapters"] = tl;
+    })();
+  </script>
+</template>

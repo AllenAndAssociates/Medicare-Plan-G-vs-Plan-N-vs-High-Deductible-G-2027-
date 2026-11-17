@@ -1,0 +1,207 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      color: #f5f1e6;
+    }
+    .s3-stage {
+      position: absolute;
+      left: 940px;
+      top: 200px;
+      width: 788px;
+      height: 760px;
+    }
+    /* Plan G column: same geometry as in Scene 4 so the cut is seamless */
+    #s3-col {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 380px;
+      height: 600px;
+      box-sizing: border-box;
+      border-radius: 22px;
+      background: rgba(19, 40, 77, 0.95);
+      border: 2px solid #3dbe7a;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    .s3-head {
+      padding: 22px 26px 18px;
+      background: linear-gradient(135deg, #1f7a4d, #165c3a);
+    }
+    .s3-name {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+    }
+    .s3-tagl {
+      font-size: 18px;
+      font-weight: 700;
+      color: #c9f0da;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .s3-row {
+      padding: 14px 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .s3-k {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8fa0bd;
+    }
+    .s3-v {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 1.22;
+      margin-top: 3px;
+    }
+    .s3-v em {
+      font-style: normal;
+      color: #7ee2a8;
+    }
+    .s3-v small {
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #a9b4c8;
+    }
+    #s3-lock {
+      display: inline-block;
+      margin-left: 6px;
+    }
+    /* Big stat on the right half of the stage */
+    #s3-stat {
+      position: absolute;
+      left: 410px;
+      top: 0;
+      width: 378px;
+      height: 600px;
+      box-sizing: border-box;
+      padding: 40px 30px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(126, 226, 168, 0.5);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #s3-big {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 132px;
+      line-height: 1;
+      color: #7ee2a8;
+    }
+    #s3-bigcap {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 27px;
+      margin-top: 16px;
+      line-height: 1.25;
+    }
+    #s3-bigsub {
+      font-size: 19px;
+      color: #a9b4c8;
+      margin-top: 14px;
+      line-height: 1.35;
+    }
+    #s3-partd {
+      position: absolute;
+      left: 0;
+      top: 630px;
+      width: 788px;
+      box-sizing: border-box;
+      padding: 18px 24px;
+      border-radius: 14px;
+      background: rgba(212, 175, 90, 0.12);
+      border: 1px solid rgba(212, 175, 90, 0.5);
+      font-size: 22px;
+      color: #f1dfb2;
+    }
+    #s3-partd b {
+      color: #d4af5a;
+    }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+    <div class="s3-stage">
+      <div id="s3-col">
+        <div class="s3-head" id="s3-head">
+          <div class="s3-name">PLAN G</div>
+          <div class="s3-tagl">Most Comprehensive</div>
+        </div>
+        <div class="s3-row" id="s3-r1">
+          <div class="s3-k">Annual Deductible</div>
+          <div class="s3-v">~$300 Part B <small>(2027 est.)</small></div>
+        </div>
+        <div class="s3-row" id="s3-r2">
+          <div class="s3-k">After Deductible</div>
+          <div class="s3-v"><em>100%</em> Part A &amp; B covered <svg id="s3-lock" width="22" height="26" viewBox="0 0 22 26"><path d="M5 11V7a6 6 0 0 1 12 0v4" fill="none" stroke="#7ee2a8" stroke-width="3"/><rect x="1" y="11" width="20" height="14" rx="3" fill="#7ee2a8"/></svg></div>
+        </div>
+        <div class="s3-row" id="s3-r3">
+          <div class="s3-k">Doctor Copays · Excess Charges</div>
+          <div class="s3-v"><em>$0</em> copays · <em>100%</em> covered</div>
+        </div>
+        <div class="s3-row" id="s3-r4">
+          <div class="s3-k">Best For</div>
+          <div class="s3-v">Maximum peace of mind &amp; predictability</div>
+        </div>
+      </div>
+
+      <div id="s3-stat">
+        <div id="s3-big"><span id="s3-num">0</span>%</div>
+        <div id="s3-bigcap">of Medicare-approved Part A &amp; B cost sharing</div>
+        <div id="s3-bigsub">after the annual Part B deductible — including Part B excess charges</div>
+      </div>
+
+      <div id="s3-partd"><b>Note:</b> You still need a separate Part D drug plan with any Medigap plan.</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 69.8;
+      const at = (abs) => +(abs - S).toFixed(2);
+      const tl = gsap.timeline({ paused: true });
+      const rowIn = (sel, abs) =>
+        tl.fromTo(sel, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(abs));
+
+      // "Let us start with Standard Plan G" (70.58)
+      tl.fromTo("#s3-col", { opacity: 0, y: 50, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, at(70.58));
+      rowIn("#s3-r1", 78.26); // "annual Medicare Part B deductible ... $300"
+      rowIn("#s3-r2", 84.02); // "covers 100%"
+      tl.fromTo("#s3-lock", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(3)" }, at(84.42));
+
+      // Big 100% stat counts up on "covers 100%"
+      tl.fromTo("#s3-stat", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, at(83.7));
+      const counter = { v: 0 };
+      tl.fromTo(
+        counter,
+        { v: 0 },
+        {
+          v: 100,
+          duration: 0.9,
+          ease: "power2.out",
+          onUpdate: () => {
+            document.querySelector("#s3-num").textContent = Math.round(counter.v);
+          },
+        },
+        at(84.0),
+      );
+      tl.fromTo("#s3-big", { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out" }, at(85.0));
+
+      rowIn("#s3-r3", 89.72); // "including Part B excess charges"
+      tl.fromTo("#s3-partd", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(91.72)); // "separate Part D"
+      rowIn("#s3-r4", 95.56); // "maximum predictability"
+
+      // Hand-off to Scene 4: the stat and note clear, the Plan G column stays put.
+      tl.to(["#s3-stat", "#s3-partd"], { opacity: 0, duration: 0.35, ease: "power2.in" }, at(99.2));
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>

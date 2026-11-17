@@ -1,0 +1,245 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      color: #f5f1e6;
+    }
+    .s1-stage {
+      position: absolute;
+      left: 940px;
+      top: 200px;
+      width: 788px;
+      height: 760px;
+    }
+    .s1-card {
+      position: absolute;
+      left: 0;
+      width: 788px;
+      box-sizing: border-box;
+      padding: 34px 40px;
+      border-radius: 22px;
+      background: rgba(19, 40, 77, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    .s1-eyebrow {
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #d4af5a;
+      margin-bottom: 14px;
+    }
+    .s1-row {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .s1-side {
+      flex: 1;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 34px;
+      line-height: 1.14;
+    }
+    .s1-op {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 64px;
+      color: #d4af5a;
+      width: 70px;
+      text-align: center;
+    }
+    .s1-vs {
+      font-size: 30px;
+      letter-spacing: 0.06em;
+    }
+    .s1-mark {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      z-index: 0;
+    }
+    .s1-hl {
+      position: absolute;
+      left: -6px;
+      right: -6px;
+      bottom: 2px;
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(212, 175, 90, 0.45);
+      z-index: -1;
+    }
+    .s1-sub {
+      margin-top: 8px;
+      font-size: 22px;
+      color: #a9b4c8;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+    }
+    #s1-auth {
+      top: 30px;
+      padding: 40px 44px;
+      background: linear-gradient(135deg, #13284d 0%, #0e1f3d 100%);
+      border: 2px solid rgba(212, 175, 90, 0.55);
+    }
+    #s1-name {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 60px;
+      letter-spacing: 0.01em;
+    }
+    #s1-title {
+      font-size: 28px;
+      color: #d4af5a;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+    #s1-rule {
+      height: 3px;
+      width: 120px;
+      background: #d4af5a;
+      margin: 22px 0;
+    }
+    #s1-tag {
+      font-size: 26px;
+      color: #dfe5ef;
+    }
+    #s1-since {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #d4af5a;
+      color: #0b1a33;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    #s1-chips {
+      position: absolute;
+      left: 0;
+      top: 420px;
+      width: 788px;
+      display: flex;
+      gap: 16px;
+    }
+    .s1-chip {
+      flex: 1;
+      text-align: center;
+      padding: 26px 10px;
+      border-radius: 18px;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 30px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+    }
+    .s1-chip small {
+      display: block;
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: #a9b4c8;
+      margin-top: 6px;
+    }
+    #s1-chip3 {
+      border-color: #d4af5a;
+    }
+    #s1-tagline {
+      position: absolute;
+      left: 0;
+      top: 600px;
+      width: 788px;
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+    }
+    #s1-tagline span {
+      color: #d4af5a;
+    }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+    <div class="s1-stage">
+      <!-- Hook card A -->
+      <div class="s1-card" id="s1-hookA" style="top: 20px">
+        <div class="s1-eyebrow">Question 1</div>
+        <div class="s1-row">
+          <div class="s1-side">Same Plan G<br />Benefits</div>
+          <div class="s1-op" id="s1-neq">≠</div>
+          <div class="s1-side">
+            Same<br /><span class="s1-mark">Long-Term Cost<span class="s1-hl" id="s1-hlA"></span></span>
+          </div>
+        </div>
+      </div>
+      <!-- Hook card B -->
+      <div class="s1-card" id="s1-hookB" style="top: 330px">
+        <div class="s1-eyebrow">Question 2</div>
+        <div class="s1-row">
+          <div class="s1-side">
+            <span class="s1-mark">$3,050<span class="s1-hl" id="s1-hlB"></span></span> Deductible
+            <div class="s1-sub">High-Deductible G Medigap</div>
+          </div>
+          <div class="s1-op s1-vs">VS</div>
+          <div class="s1-side">
+            $0 Premium
+            <div class="s1-sub">Medicare Advantage</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authority card -->
+      <div class="s1-card" id="s1-auth">
+        <div class="s1-eyebrow">Your Guide</div>
+        <div id="s1-name">Arric Allen</div>
+        <div id="s1-title">Principal, Allen &amp; Associates</div>
+        <div id="s1-rule"></div>
+        <div id="s1-tag">Plain-English Medicare facts <span id="s1-since">Since 1994</span></div>
+      </div>
+
+      <div id="s1-chips">
+        <div class="s1-chip" id="s1-chip1">Plan G<small>Most comprehensive</small></div>
+        <div class="s1-chip" id="s1-chip2">Plan N<small>Lower premium</small></div>
+        <div class="s1-chip" id="s1-chip3">High-Ded G<small>2027</small></div>
+      </div>
+      <div id="s1-tagline">Right coverage <span>+</span> right carrier</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const cardIn = (sel, t) =>
+        tl.fromTo(sel, { opacity: 0, y: 40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, t);
+      const pop = (sel, t) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.38, ease: "back.out(2)" }, t);
+      const swipe = (sel, t) =>
+        tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out", transformOrigin: "0% 50%" }, t);
+
+      // "What if two Medicare Supplement Plan G policies..." (0.00)
+      cardIn("#s1-hookA", 0.3);
+      pop("#s1-neq", 4.4); // "exact same"
+      swipe("#s1-hlA", 8.28); // "thousands more"
+
+      // "Or what if a supplement plan with a $3,050 deductible..." (10.40)
+      cardIn("#s1-hookB", 10.4);
+      swipe("#s1-hlB", 12.68); // "$3,050"
+
+      // Hooks clear for the authority card: "I am Arric Allen" (19.62)
+      tl.to(["#s1-hookA", "#s1-hookB"], { opacity: 0, y: -30, duration: 0.35, ease: "power2.in", stagger: 0.06 }, 19.1);
+      tl.fromTo("#s1-auth", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 19.55);
+      pop("#s1-since", 22.46); // "since 1994"
+
+      // "Today, we are comparing Plan G, Plan N, and High-Deductible Plan G for 2027"
+      pop("#s1-chip1", 29.64);
+      pop("#s1-chip2", 30.86);
+      pop("#s1-chip3", 31.98);
+      tl.fromTo("#s1-tagline", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 36.0);
+
+      // Scene exit
+      tl.to(".s1-stage", { opacity: 0, duration: 0.35, ease: "power2.in" }, 37.95);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

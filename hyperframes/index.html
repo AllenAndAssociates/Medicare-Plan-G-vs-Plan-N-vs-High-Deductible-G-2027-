@@ -1,0 +1,195 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[
+    {"id":"brandName","type":"string","label":"Brand name","default":"Allen & Associates"},
+    {"id":"gold","type":"color","label":"Brand gold","default":"#D4AF5A"},
+    {"id":"navy","type":"color","label":"Brand navy","default":"#0B1A33"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plan G vs Plan N vs High-Deductible G (2027)</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0b1a33;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(1200px 800px at 85% 10%, #1a3566 0%, rgba(26, 53, 102, 0) 60%),
+          linear-gradient(160deg, var(--navy, #0b1a33) 0%, #07111f 100%);
+      }
+      #aroll {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 900px;
+        height: 1080px;
+        object-fit: cover;
+        object-position: 50% 50%;
+        z-index: 1;
+      }
+      #divider {
+        position: absolute;
+        left: 900px;
+        top: 0;
+        width: 4px;
+        height: 1080px;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(212, 175, 90, 0) 0%, var(--gold, #d4af5a) 20%, var(--gold, #d4af5a) 80%, rgba(212, 175, 90, 0) 100%);
+      }
+      .scene-host {
+        z-index: 5;
+      }
+      #chapters {
+        z-index: 6;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="250.24"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="bg"></div>
+
+      <video
+        id="aroll"
+        class="clip"
+        src="assets/arric-aroll.mp4"
+        data-start="0"
+        data-duration="250.24"
+        data-track-index="0"
+        data-has-audio="true"
+        data-volume="1"
+        playsinline
+      ></video>
+
+      <div id="divider"></div>
+
+      <!-- Persistent brand strip + chapter tabs (lane 2, spans the film) -->
+      <div
+        id="chapters"
+        data-composition-id="chapters"
+        data-composition-src="compositions/chapters.html"
+        data-start="0"
+        data-duration="250.24"
+        data-track-index="2"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- Right-stage scenes, back to back on lane 1. Times match the VO word timestamps. -->
+      <div
+        id="s1"
+        class="scene-host"
+        data-composition-id="s1"
+        data-composition-src="compositions/s1-hook.html"
+        data-start="0"
+        data-duration="38.4"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s2"
+        class="scene-host"
+        data-composition-id="s2"
+        data-composition-src="compositions/s2-shared.html"
+        data-start="38.4"
+        data-duration="31.4"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s3"
+        class="scene-host"
+        data-composition-id="s3"
+        data-composition-src="compositions/s3-plan-g.html"
+        data-start="69.8"
+        data-duration="29.8"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s4"
+        class="scene-host"
+        data-composition-id="s4"
+        data-composition-src="compositions/s4-plan-n.html"
+        data-start="99.6"
+        data-duration="32.7"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s5"
+        class="scene-host"
+        data-composition-id="s5"
+        data-composition-src="compositions/s5-hdg.html"
+        data-start="132.3"
+        data-duration="46.6"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s6"
+        class="scene-host"
+        data-composition-id="s6"
+        data-composition-src="compositions/s6-myth.html"
+        data-start="178.9"
+        data-duration="39.5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="s7"
+        class="scene-host"
+        data-composition-id="s7"
+        data-composition-src="compositions/s7-cta.html"
+        data-start="218.4"
+        data-duration="31.84"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

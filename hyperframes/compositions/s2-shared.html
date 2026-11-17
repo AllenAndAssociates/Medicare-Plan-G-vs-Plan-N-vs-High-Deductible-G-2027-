@@ -1,0 +1,166 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      color: #f5f1e6;
+    }
+    .s2-stage {
+      position: absolute;
+      left: 940px;
+      top: 200px;
+      width: 788px;
+      height: 760px;
+    }
+    #s2-card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 788px;
+      box-sizing: border-box;
+      padding: 34px 40px 30px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, #0f3b2c 0%, #0c2a22 100%);
+      border: 2px solid rgba(61, 190, 122, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    #s2-title {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      color: #7ee2a8;
+      margin-bottom: 22px;
+    }
+    .s2-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .s2-check {
+      flex: 0 0 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #3dbe7a;
+      color: #08241a;
+      font-weight: 900;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .s2-k {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a7d9bd;
+    }
+    .s2-v {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 31px;
+      line-height: 1.2;
+      margin-top: 4px;
+    }
+    #s2-callout {
+      position: absolute;
+      left: 0;
+      top: 592px;
+      width: 788px;
+      box-sizing: border-box;
+      padding: 26px 32px;
+      border-radius: 18px;
+      background: #f5f1e6;
+      color: #0b1a33;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 33px;
+      text-align: center;
+    }
+    .s2-mark {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      line-height: 1.35;
+      z-index: 0;
+    }
+    .s2-hl {
+      position: absolute;
+      left: -6px;
+      right: -6px;
+      top: 6px;
+      bottom: 2px;
+      border-radius: 4px;
+      background: rgba(61, 190, 122, 0.55);
+      z-index: -1;
+    }
+    #s2-hl2 {
+      background: rgba(212, 175, 90, 0.6);
+    }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1920" data-height="1080">
+    <div class="s2-stage">
+      <div id="s2-card">
+        <div id="s2-title">WHAT PLAN G, PLAN N &amp; HDG ALL SHARE</div>
+        <div class="s2-item" id="s2-i1">
+          <div class="s2-check" id="s2-c1">✓</div>
+          <div>
+            <div class="s2-k">Primary Insurance</div>
+            <div class="s2-v">Original Medicare (Parts A &amp; B)</div>
+          </div>
+        </div>
+        <div class="s2-item" id="s2-i2">
+          <div class="s2-check" id="s2-c2">✓</div>
+          <div>
+            <div class="s2-k">Nationwide Access</div>
+            <div class="s2-v">Any Medicare Doctor or Hospital</div>
+          </div>
+        </div>
+        <div class="s2-item" id="s2-i3">
+          <div class="s2-check" id="s2-c3">✓</div>
+          <div>
+            <div class="s2-k">No Network Rules</div>
+            <div class="s2-v">Zero HMO/PPO Networks &amp; Zero Referrals Required</div>
+          </div>
+        </div>
+      </div>
+      <div id="s2-callout">
+        <span class="s2-mark">Same Doctor Freedom<span class="s2-hl" id="s2-hl1"></span></span> —<br />
+        <span class="s2-mark" id="s2-math">Different Cost-Sharing Math<span class="s2-hl" id="s2-hl2"></span></span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 38.4;
+      const at = (abs) => +(abs - S).toFixed(2);
+      const tl = gsap.timeline({ paused: true });
+
+      // "Before comparing the differences..." (38.46)
+      tl.fromTo("#s2-card", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, at(38.6));
+      tl.fromTo("#s2-title", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, at(39.0));
+
+      const row = (n, abs) => {
+        tl.fromTo("#s2-i" + n, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, at(abs));
+        tl.fromTo("#s2-c" + n, { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.42, ease: "back.out(2.4)" }, at(abs) + 0.1);
+      };
+      row(1, 43.04); // "First, none of these are Medicare Advantage plans... Original Medicare"
+      row(2, 54.54); // "nationwide freedom to visit any doctor or hospital"
+      row(3, 59.84); // "zero network restrictions and zero referrals required"
+
+      // "You are not comparing different doctor networks." (63.64)
+      tl.fromTo("#s2-callout", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.4)" }, at(63.64));
+      tl.fromTo("#s2-hl1", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out", transformOrigin: "0% 50%" }, at(64.14));
+      // "...different ways of sharing your medical costs." (66.26)
+      tl.fromTo("#s2-hl2", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out", transformOrigin: "0% 50%" }, at(66.9));
+      tl.fromTo("#s2-math", { scale: 1 }, { scale: 1.06, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, at(67.98));
+
+      tl.to(".s2-stage", { opacity: 0, duration: 0.35, ease: "power2.in" }, at(69.35));
+      window.__timelines["s2"] = tl;
+    })();
+  </script>
+</template>

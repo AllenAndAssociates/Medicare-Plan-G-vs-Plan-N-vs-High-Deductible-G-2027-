@@ -1,0 +1,270 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, sans-serif;
+      color: #f5f1e6;
+    }
+    .s7-stage {
+      position: absolute;
+      left: 940px;
+      top: 200px;
+      width: 788px;
+      height: 760px;
+    }
+    #s7-check {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 788px;
+    }
+    #s7-ch-h {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+    #s7-ch-h span {
+      color: #d4af5a;
+    }
+    .s7-items {
+      display: flex;
+      gap: 12px;
+    }
+    .s7-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 16px;
+      border-radius: 16px;
+      background: rgba(19, 40, 77, 0.95);
+      border: 1px solid rgba(212, 175, 90, 0.45);
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1.2;
+    }
+    .s7-num {
+      flex: 0 0 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #d4af5a;
+      color: #0b1a33;
+      font-weight: 900;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #s7-opts {
+      position: absolute;
+      left: 0;
+      top: 170px;
+      width: 788px;
+    }
+    .s7-opt {
+      box-sizing: border-box;
+      border-radius: 20px;
+      padding: 22px 30px;
+      margin-bottom: 18px;
+    }
+    #s7-o1 {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    #s7-o2 {
+      overflow: visible;
+      background: linear-gradient(150deg, #13284d 0%, #0b1a33 100%);
+      border: 3px solid #d4af5a;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+    .s7-ok {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: #8fa0bd;
+      text-transform: uppercase;
+    }
+    #s7-o2 .s7-ok {
+      color: #d4af5a;
+    }
+    #s7-gov {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    #s7-gov b {
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+    }
+    #s7-gov span {
+      font-size: 19px;
+      color: #a9b4c8;
+    }
+    #s7-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 12px;
+    }
+    #s7-mono {
+      flex: 0 0 76px;
+      height: 76px;
+      border-radius: 16px;
+      background: #d4af5a;
+      color: #0b1a33;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #s7-word {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1;
+    }
+    #s7-word small {
+      display: block;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      color: #d4af5a;
+      margin-top: 8px;
+    }
+    #s7-o2-sub {
+      font-size: 20px;
+      color: #c9d1df;
+      margin-top: 14px;
+    }
+    .s7-contact {
+      display: flex;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .s7-pill {
+      position: relative;
+      flex: 1;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(212, 175, 90, 0.14);
+      border: 1px solid rgba(212, 175, 90, 0.6);
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .s7-pill small {
+      display: block;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #d4af5a;
+      margin-bottom: 4px;
+    }
+    #s7-cursor {
+      position: absolute;
+      right: -10px;
+      bottom: -18px;
+      width: 28px;
+      height: 34px;
+    }
+    #s7-disc {
+      position: absolute;
+      left: 0;
+      top: 728px;
+      width: 788px;
+      font-size: 14px;
+      line-height: 1.35;
+      color: #7f8aa0;
+      text-align: center;
+    }
+  </style>
+  <div
+    id="root"
+    data-composition-id="s7"
+    data-width="1920"
+    data-height="1080"
+    data-composition-variables='[
+      {"id":"phone","type":"string","label":"Phone","default":"800-324-9986"},
+      {"id":"site","type":"string","label":"Website","default":"allenandassociates.agency"},
+      {"id":"disclaimer","type":"string","label":"Disclaimer","default":"Not connected with or endorsed by the U.S. government or the federal Medicare program. Premiums and rates shown are examples; 2027 Part B figures are estimates."}
+    ]'
+  >
+    <div class="s7-stage">
+      <div id="s7-check">
+        <div id="s7-ch-h">Compare <span>3 numbers</span> for 2027</div>
+        <div class="s7-items">
+          <div class="s7-item" id="s7-i1"><div class="s7-num">1</div>Annual Premium</div>
+          <div class="s7-item" id="s7-i2"><div class="s7-num">2</div>Worst-Case Out-of-Pocket</div>
+          <div class="s7-item" id="s7-i3"><div class="s7-num">3</div>Carrier Rate History</div>
+        </div>
+      </div>
+
+      <div id="s7-opts">
+        <div class="s7-opt" id="s7-o1">
+          <div class="s7-ok">Option 1 · Compare plans yourself</div>
+          <div id="s7-gov"><b>Medicare.gov</b><span>Official U.S. government plan finder</span></div>
+        </div>
+        <div class="s7-opt" id="s7-o2">
+          <div class="s7-ok">Option 2 · Compare carrier rate histories with a consultant</div>
+          <div id="s7-brand">
+            <div id="s7-mono">A&amp;A</div>
+            <div id="s7-word">Allen &amp; Associates<small>SINCE 1994</small></div>
+          </div>
+          <div id="s7-o2-sub">Speak with a licensed consultant about carriers in your state.</div>
+          <div class="s7-contact">
+            <div class="s7-pill" id="s7-phone"><small>CALL</small><span data-var-text="phone">800-324-9986</span></div>
+            <div class="s7-pill" id="s7-site">
+              <small>VISIT</small><span data-var-text="site">allenandassociates.agency</span>
+              <svg id="s7-cursor" viewBox="0 0 28 34"><path d="M2 2 L2 28 L9 21 L14 32 L19 30 L14 19 L24 19 Z" fill="#fff" stroke="#0b1a33" stroke-width="2" stroke-linejoin="round" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="s7-disc" data-var-text="disclaimer">
+        Not connected with or endorsed by the U.S. government or the federal Medicare program. Premiums and rates shown are examples; 2027 Part B figures are estimates.
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = 218.4;
+      const at = (abs) => +(abs - S).toFixed(2);
+      const tl = gsap.timeline({ paused: true });
+      const pop = (sel, abs) =>
+        tl.fromTo(sel, { opacity: 0, scale: 0.85, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.38, ease: "back.out(2)" }, at(abs));
+
+      // "To make the smartest decision for 2027, compare three numbers" (218.42)
+      tl.fromTo("#s7-ch-h", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(218.6));
+      pop("#s7-i1", 223.04); // "your annual premium"
+      pop("#s7-i2", 224.58); // "worst-case out-of-pocket exposure"
+      pop("#s7-i3", 227.18); // "the carrier's long-term rate stability"
+
+      // "visit Medicare.gov" (229.64 / 233.2)
+      tl.fromTo("#s7-o1", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, at(229.9));
+      tl.fromTo("#s7-gov", { scale: 1 }, { scale: 1.05, duration: 0.18, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 50%" }, at(233.3));
+
+      // "And if you would like to speak directly with a licensed consultant" (235.14)
+      tl.fromTo("#s7-o2", { opacity: 0, y: 40, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, at(235.14));
+      pop("#s7-phone", 242.76); // "800-324-9986"
+      pop("#s7-site", 247.18); // "allenandassociates.agency"
+      tl.fromTo("#s7-cursor", { opacity: 0, x: 40, y: 30 }, { opacity: 1, x: 0, y: 0, duration: 0.5, ease: "power2.out" }, at(247.5));
+      tl.fromTo("#s7-cursor", { scale: 1 }, { scale: 0.8, duration: 0.08, yoyo: true, repeat: 1, ease: "power1.inOut" }, at(248.2));
+      tl.fromTo("#s7-site", { backgroundColor: "rgba(212,175,90,0.14)" }, { backgroundColor: "rgba(212,175,90,0.4)", duration: 0.25 }, at(248.25));
+      tl.fromTo("#s7-disc", { opacity: 0 }, { opacity: 1, duration: 0.5 }, at(235.5));
+
+      tl.set({}, {}, at(250.2));
+      window.__timelines["s7"] = tl;
+    })();
+  </script>
+</template>
