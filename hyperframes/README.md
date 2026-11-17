@@ -42,35 +42,26 @@ Logo: `assets/aa-logo.png` appears on a white plate in the s1 authority card and
 | 6 Carrier Myth | 3:42–4:42 | 2:58.9–3:38.4 |
 | 7 Checklist & CTA | 4:42–5:25 | 3:38.4–4:10.24 |
 
-## SFX cue sheet (re-timed to the actual VO, for the audio pass)
+## Audio mix (built in)
 
-No sound effects are baked into the composition. Drop these on one SFX lane, with each peak landing about one frame after its visual.
+- **Voice:** A-roll audio, normalized from -28.8 to **-16 LUFS** (`assets/audio/vo-normalized.m4a`). The A-roll `<video>` is muted.
+- **Music:** `assets/audio/music-bed.mp3`, ElevenLabs instrumental (soft piano and acoustic guitar, no drums or vocals). It plays at -23 dB, about 24 dB under the voice, with a 2 s fade-in and a short lift after the last word.
+- **Sound effects:** 14 soft cues on one lane, peaking 12–16 dB below the voice. The negation buzzer, music hard stop, dial-tone ticks, triple pops and ratchet ticks from the original script were cut on purpose for a 65+ audience.
+- **Final mix:** -16 LUFS integrated, -1 dBFS peak. Levels were measured, not listened to.
 
-| Time | Cue | Trigger word / visual |
-|---|---|---|
-| 0:00.3 | Soft UI pop | Hook card 1 |
-| 0:10.4 | Soft UI pop | Hook card 2 ("Or what if") |
-| 0:19.6 | Whoosh | Authority card ("I am Arric Allen") |
-| 0:29.6 / 0:30.9 / 0:32.0 | 3 quick pops | Plan G / Plan N / High-Ded G chips |
-| 0:43.1 / 0:54.6 / 0:59.9 | Checkmark ding ×3 | Shared-benefit rows |
-| 1:04.1 | Highlighter swipe | "Same Doctor Freedom" |
-| 1:10.6 | Card pop | Plan G column |
-| 1:24.4 | Padlock click + green chime | "100%" Part A & B |
-| 1:51.7 / 1:54.3 / 1:59.6 | Ascending pops ×3 | $20 / $50 / excess charges |
-| 2:05.4 | Warm double-chime | Pro-tip banner |
-| 2:09.4 | Highlighter swipe | "$60–$100" |
-| 2:16.0–2:17.2 | Ratchet ticks | Counter to $3,050 |
-| 2:40.2 | Cash/price-tag chime | "Save $1,500/yr" |
-| 2:46.7 / 2:49.3 | UI pops | MA $300 / $6–7k limit |
-| 2:51.9–2:52.2 | UI pop | HDG $3,050 ceiling |
-| 2:58.9 | MUSIC HARD STOP + warning double-chime | "However…" |
-| 3:09.5 | Negation buzzer | MYTH card |
-| 3:18.0 | (strike-through) | "While the plan letters…" |
-| 3:22.0 | Rubber-stamp thud | "NOT" |
-| 3:23.0 | Groove resumes softly | Flowchart |
-| 3:34.4 | Padlock click | Medical underwriting |
-| 3:43.0 / 3:44.6 / 3:47.2 | Ascending pops 1-2-3 | Checklist |
-| 3:49.9 | Music swells to −22 dB + pop | Medicare.gov |
-| 4:02.8 | Dial-tone ticks (−22 dB) | Phone number |
-| 4:07.2 / 4:08.2 | Pop + mouse click | Website + cursor click |
-| 4:10.2 | Resolving chord | End |
+| Start | File | Gain | Cue |
+|---|---|---|---|
+| 0:19.62 | `sfx-whoosh1.mp3` | -12.7 dB | Authority card slides in |
+| 0:38.46 | `sfx-whoosh2.mp3` | -17.1 dB | Chapter 1: Shared Freedom |
+| 1:01.29 | `sfx-unlock.mp3` | -12.3 dB | Padlock springs open ("zero referrals") |
+| 1:09.87 | `sfx-whoosh1.mp3` | -12.7 dB | Chapter 2: Plan G vs N |
+| 1:24.72 | `sfx-lock.mp3` | -16.1 dB | Plan G padlock snaps shut ("100%") |
+| 2:09.19 | `sfx-thunk.mp3` | -12.6 dB | Break-even scale tips to Plan N |
+| 2:12.31 | `sfx-whoosh2.mp3` | -17.1 dB | Chapter 3: High-Deductible G |
+| 2:24.94 | `sfx-pour.mp3` | -7.0 dB | Deductible bucket fills |
+| 3:07.54 | `sfx-whoosh1.mp3` | -12.7 dB | Chapter 4: Carrier Myth |
+| 3:21.88 | `sfx-stamp.mp3` | -0.4 dB | "NOT" stamp |
+| 3:34.75 | `sfx-wall.mp3` | +3.4 dB | Underwriting wall drops |
+| 3:38.41 | `sfx-whoosh2.mp3` | -17.1 dB | Chapter 5: Action Plan |
+| 4:02.68 | `sfx-click.mp3` | -9.3 dB | Phone number appears |
+| 4:07.98 | `sfx-click.mp3` | -6.3 dB | Cursor clicks website |

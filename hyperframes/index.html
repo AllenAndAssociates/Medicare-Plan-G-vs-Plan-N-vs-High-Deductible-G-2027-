@@ -81,12 +81,32 @@
         data-start="0"
         data-duration="250.24"
         data-track-index="0"
-        data-has-audio="true"
-        data-volume="1"
+        muted
         playsinline
       ></video>
 
       <div id="divider"></div>
+
+
+      <!-- Audio. Voice: A-roll audio normalized to -16 LUFS (the A-roll video itself is muted). -->
+      <audio id="vo" src="assets/audio/vo-normalized.m4a" data-start="0" data-duration="250.24" data-track-index="3" data-volume="1"></audio>
+      <!-- Music bed: -23 dB (about 24 dB under the voice), 2 s fade-in. -->
+      <audio id="music" src="assets/audio/music-bed.mp3" data-start="0" data-duration="250.24" data-track-index="4" data-volume="0.071" data-fade-in="2"></audio>
+      <!-- Sound effects: one lane; each peak lands one frame after its visual. -->
+      <audio id="sfx-auth" src="assets/audio/sfx-whoosh1.mp3" data-start="19.62" data-track-index="5" data-volume="0.232"></audio> <!-- Authority card slides in -->
+      <audio id="sfx-ch1" src="assets/audio/sfx-whoosh2.mp3" data-start="38.46" data-track-index="5" data-volume="0.14"></audio> <!-- Chapter 1: Shared Freedom -->
+      <audio id="sfx-unlock" src="assets/audio/sfx-unlock.mp3" data-start="61.29" data-track-index="5" data-volume="0.243"></audio> <!-- Padlock springs open ("zero referrals") -->
+      <audio id="sfx-ch2" src="assets/audio/sfx-whoosh1.mp3" data-start="69.87" data-track-index="5" data-volume="0.232"></audio> <!-- Chapter 2: Plan G vs N -->
+      <audio id="sfx-lock" src="assets/audio/sfx-lock.mp3" data-start="84.72" data-track-index="5" data-volume="0.157"></audio> <!-- Plan G padlock snaps shut ("100%") -->
+      <audio id="sfx-scale" src="assets/audio/sfx-thunk.mp3" data-start="129.19" data-track-index="5" data-volume="0.234"></audio> <!-- Break-even scale tips to Plan N -->
+      <audio id="sfx-ch3" src="assets/audio/sfx-whoosh2.mp3" data-start="132.31" data-track-index="5" data-volume="0.14"></audio> <!-- Chapter 3: High-Deductible G -->
+      <audio id="sfx-pour" src="assets/audio/sfx-pour.mp3" data-start="144.94" data-track-index="5" data-volume="0.447"></audio> <!-- Deductible bucket fills -->
+      <audio id="sfx-ch4" src="assets/audio/sfx-whoosh1.mp3" data-start="187.54" data-track-index="5" data-volume="0.232"></audio> <!-- Chapter 4: Carrier Myth -->
+      <audio id="sfx-stamp" src="assets/audio/sfx-stamp.mp3" data-start="201.88" data-track-index="5" data-volume="0.955"></audio> <!-- "NOT" stamp -->
+      <audio id="sfx-wall" src="assets/audio/sfx-wall.mp3" data-start="214.75" data-track-index="5" data-volume="1.479"></audio> <!-- Underwriting wall drops -->
+      <audio id="sfx-ch5" src="assets/audio/sfx-whoosh2.mp3" data-start="218.41" data-track-index="5" data-volume="0.14"></audio> <!-- Chapter 5: Action Plan -->
+      <audio id="sfx-phone" src="assets/audio/sfx-click.mp3" data-start="242.68" data-track-index="5" data-volume="0.343"></audio> <!-- Phone number appears -->
+      <audio id="sfx-click" src="assets/audio/sfx-click.mp3" data-start="247.98" data-track-index="5" data-volume="0.484"></audio> <!-- Cursor clicks website -->
 
       <!-- Persistent brand strip + chapter tabs (lane 2, spans the film) -->
       <div
