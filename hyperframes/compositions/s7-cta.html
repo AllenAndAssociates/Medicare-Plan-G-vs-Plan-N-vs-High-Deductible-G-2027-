@@ -61,14 +61,14 @@
     #s7-opts {
       position: absolute;
       left: 0;
-      top: 170px;
+      top: 306px;
       width: 788px;
     }
     .s7-opt {
       box-sizing: border-box;
       border-radius: 20px;
-      padding: 22px 30px;
-      margin-bottom: 18px;
+      padding: 16px 26px;
+      margin-bottom: 12px;
     }
     #s7-o1 {
       background: rgba(255, 255, 255, 0.06);
@@ -121,7 +121,7 @@
     }
     #s7-logo {
       display: block;
-      height: 96px;
+      height: 78px;
       width: auto;
     }
     #s7-since {
@@ -169,14 +169,14 @@
       margin-top: 8px;
     }
     #s7-o2-sub {
-      font-size: 20px;
+      font-size: 18px;
       color: #c9d1df;
-      margin-top: 14px;
+      margin-top: 10px;
     }
     .s7-contact {
       display: flex;
       gap: 14px;
-      margin-top: 16px;
+      margin-top: 12px;
     }
     .s7-pill {
       position: relative;
@@ -210,7 +210,7 @@
     #s7-disc {
       position: absolute;
       left: 0;
-      top: 728px;
+      top: 732px;
       width: 788px;
       font-size: 14px;
       line-height: 1.35;
@@ -231,12 +231,20 @@
   >
     <div class="s7-stage">
       <div id="s7-check">
-        <div id="s7-ch-h">Compare <span>3 numbers</span> for 2027</div>
-        <div class="s7-items">
-          <div class="s7-item" id="s7-i1"><div class="s7-num">1</div>Annual Premium</div>
-          <div class="s7-item" id="s7-i2"><div class="s7-num">2</div>Worst-Case Out-of-Pocket</div>
-          <div class="s7-item" id="s7-i3"><div class="s7-num">3</div>Carrier Rate History</div>
-        </div>
+        <svg id="s7-tri" width="788" height="292" viewBox="0 0 788 292">
+          <text x="394" y="22" fill="#f5f1e6" font-size="24" font-weight="800" font-family="Montserrat, sans-serif" text-anchor="middle" id="s7-trih">Your 2027 <tspan fill="#d4af5a">scorecard</tspan></text>
+          <path id="s7-triFill" d="M394 58 L 170 236 L 618 236 Z" fill="rgba(212,175,90,0.16)" />
+          <path id="s7-e1" pathLength="1" d="M394 58 L 170 236" fill="none" stroke="#d4af5a" stroke-width="5" stroke-linecap="round" />
+          <path id="s7-e2" pathLength="1" d="M170 236 L 618 236" fill="none" stroke="#d4af5a" stroke-width="5" stroke-linecap="round" />
+          <path id="s7-e3" pathLength="1" d="M618 236 L 394 58" fill="none" stroke="#d4af5a" stroke-width="5" stroke-linecap="round" />
+          <text id="s7-center" x="394" y="182" fill="#f1d28a" font-size="17" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">COMPARE ALL 3</text>
+          <g id="s7-v1"><circle cx="394" cy="58" r="24" fill="#d4af5a" /><text x="394" y="66" fill="#0b1a33" font-size="22" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">1</text>
+            <text x="430" y="66" fill="#f5f1e6" font-size="21" font-weight="800" font-family="Montserrat, sans-serif">Annual Premium</text></g>
+          <g id="s7-v2"><circle cx="170" cy="236" r="24" fill="#d4af5a" /><text x="170" y="244" fill="#0b1a33" font-size="22" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">2</text>
+            <text x="170" y="284" fill="#f5f1e6" font-size="21" font-weight="800" font-family="Montserrat, sans-serif" text-anchor="middle">Max Exposure</text></g>
+          <g id="s7-v3"><circle cx="618" cy="236" r="24" fill="#d4af5a" /><text x="618" y="244" fill="#0b1a33" font-size="22" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">3</text>
+            <text x="618" y="284" fill="#f5f1e6" font-size="21" font-weight="800" font-family="Montserrat, sans-serif" text-anchor="middle">10-Year Rate Stability</text></g>
+        </svg>
       </div>
 
       <div id="s7-opts">
@@ -274,10 +282,18 @@
         tl.fromTo(sel, { opacity: 0, scale: 0.85, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.38, ease: "back.out(2)" }, at(abs));
 
       // "To make the smartest decision for 2027, compare three numbers" (218.42)
-      tl.fromTo("#s7-ch-h", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(218.6));
-      pop("#s7-i1", 223.04); // "your annual premium"
-      pop("#s7-i2", 224.58); // "worst-case out-of-pocket exposure"
-      pop("#s7-i3", 227.18); // "the carrier's long-term rate stability"
+      const draw = (sel, abs, d = 0.45) => tl.fromTo(sel, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, at(abs));
+      const node = (sel, abs) => tl.fromTo(sel, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, at(abs));
+      tl.fromTo("#s7-trih", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, at(218.6));
+      tl.set(["#s7-triFill", "#s7-center"], { opacity: 0 }, 0);
+      node("#s7-v1", 223.04); // "your annual premium"
+      draw("#s7-e1", 223.6);
+      node("#s7-v2", 224.58); // "worst-case out-of-pocket exposure"
+      draw("#s7-e2", 225.4);
+      node("#s7-v3", 227.18); // "carrier's long-term rate stability"
+      draw("#s7-e3", 227.6);
+      tl.fromTo(["#s7-triFill", "#s7-center"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(228.2));
+      tl.to("#s7-tri", { opacity: 0.75, duration: 0.4 }, at(229.6));
 
       // "visit Medicare.gov" (229.64 / 233.2)
       tl.fromTo("#s7-o1", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power2.out" }, at(229.9));

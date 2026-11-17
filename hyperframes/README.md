@@ -4,8 +4,13 @@
 
 ```
 index.html                 root: A-roll + chapter rail + 7 scene hosts (250.24 s)
-compositions/chapters.html brand strip + 5 chapter tabs
-compositions/s1-hook.html … s7-cta.html
+compositions/chapters.html brand strip, "Now comparing" badge, 5 progress-fill chapter bars
+compositions/s1-hook.html       cost-over-time two-line graph → authority card
+compositions/s2-shared.html     U.S. map lights up + "Any Medicare doctor" stamp
+compositions/s3-dashboard.html  3-dial dashboard: premium gauge, predictability lock/coins, break-even scale (Plan G + Plan N)
+compositions/s5-hdg.html        deductible bucket meter, annual premium bars, worst-case ceiling chart
+compositions/s6-myth.html       comfort check, myth/fact, teaser-rate trap curve
+compositions/s7-cta.html        3-point scorecard triangle → Medicare.gov + Allen & Associates card
 assets/arric-aroll.mp4     A-roll re-encoded with 1 s keyframes (required for frame-accurate seeking)
 ```
 
@@ -32,8 +37,7 @@ Logo: `assets/aa-logo.png` appears on a white plate in the s1 authority card and
 |---|---|---|
 | 1 Hook & Authority | 0:00–0:34 | 0:00.0–0:38.4 |
 | 2 Shared Freedom | 0:34–1:10 | 0:38.4–1:09.8 |
-| 3 Plan G | 1:10–1:48 | 1:09.8–1:39.6 |
-| 4 Plan N | 1:48–2:38 | 1:39.6–2:12.3 |
+| 3+4 Plan G vs N dashboard | 1:10–2:38 | 1:09.8–2:12.3 |
 | 5 High-Ded G + MA | 2:38–3:42 | 2:12.3–2:58.9 |
 | 6 Carrier Myth | 3:42–4:42 | 2:58.9–3:38.4 |
 | 7 Checklist & CTA | 4:42–5:25 | 3:38.4–4:10.24 |

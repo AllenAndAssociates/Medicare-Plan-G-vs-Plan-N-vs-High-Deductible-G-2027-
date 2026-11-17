@@ -9,21 +9,67 @@
     #ch-brand {
       position: absolute;
       left: 940px;
-      top: 64px;
+      top: 52px;
       width: 788px;
+      height: 44px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    #ch-brand-l {
       font-weight: 700;
       font-size: 15px;
       letter-spacing: 0.14em;
-      white-space: nowrap;
       text-transform: uppercase;
       color: #a9b4c8;
+      white-space: nowrap;
     }
-    #ch-brand b {
+    #ch-brand-l b {
       color: #d4af5a;
     }
+    /* Persistent "now comparing" badge */
+    #ch-badge {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 40px;
+      padding: 0 16px 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 90, 0.55);
+      white-space: nowrap;
+    }
+    #ch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3dbe7a;
+      box-shadow: 0 0 0 4px rgba(61, 190, 122, 0.25);
+    }
+    #ch-badge-k {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #8fa0bd;
+    }
+    #ch-badge-v {
+      position: relative;
+      width: 196px;
+      height: 24px;
+    }
+    .ch-bv {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 19px;
+      line-height: 24px;
+      color: #f5f1e6;
+      opacity: 0;
+    }
+    /* Segmented fill timeline */
     #ch-tabs {
       position: absolute;
       left: 940px;
@@ -38,23 +84,27 @@
       flex: 1;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #7f8aa0;
-      font-weight: 700;
-      font-size: 14px;
-      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+    .ch-lab {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      overflow: hidden;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+      color: #c9d1df;
     }
     .ch-num {
       font-family: Montserrat, sans-serif;
       font-weight: 800;
-      font-size: 13px;
-      width: 22px;
-      height: 22px;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -62,83 +112,83 @@
       background: rgba(255, 255, 255, 0.1);
       color: #c9d1df;
     }
+    /* gold layer, revealed left→right with clip-path as the section plays */
     .ch-fill {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #d4af5a, #b8913a);
-      opacity: 0;
+      background: linear-gradient(90deg, #b8913a, #e3c06b);
+      clip-path: inset(0 100% 0 0);
     }
-    .ch-label,
-    .ch-num {
-      position: relative;
+    .ch-fill .ch-lab {
+      color: #0b1a33;
     }
-    .ch-label-on {
+    .ch-fill .ch-num {
+      background: rgba(11, 26, 51, 0.85);
+      color: #e3c06b;
+    }
+    .ch-ring {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #0b1a33;
+      border-radius: 12px;
+      border: 2px solid #f1d28a;
       opacity: 0;
-    }
-    .ch-label-on .ch-num {
-      background: rgba(11, 26, 51, 0.85);
-      color: #d4af5a;
     }
   </style>
   <div id="root" data-composition-id="chapters" data-width="1920" data-height="1080">
     <div id="ch-brand">
-      <span><b>Allen &amp; Associates</b> &nbsp;·&nbsp; Plain-English Medicare</span>
-      <span>2027 Medigap Guide</span>
+      <span id="ch-brand-l"><b>Allen &amp; Associates</b> &nbsp;·&nbsp; 2027 Guide</span>
+      <div id="ch-badge">
+        <span id="ch-dot"></span>
+        <span id="ch-badge-k">NOW COMPARING</span>
+        <span id="ch-badge-v">
+          <span class="ch-bv" id="ch-bv0">All 3 Plans</span>
+          <span class="ch-bv" id="ch-bv1">Plan G</span>
+          <span class="ch-bv" id="ch-bv2">Plan N</span>
+          <span class="ch-bv" id="ch-bv3">High-Deductible G</span>
+          <span class="ch-bv" id="ch-bv4">Plan G Carriers</span>
+          <span class="ch-bv" id="ch-bv5">All 3 Plans</span>
+        </span>
+      </div>
     </div>
     <div id="ch-tabs">
-      <div class="ch-tab" id="ch-t1">
-        <span class="ch-num">1</span><span class="ch-label">Shared Freedom</span>
-        <div class="ch-fill" id="ch-f1"></div>
-        <div class="ch-label-on" id="ch-o1"><span class="ch-num">1</span>Shared Freedom</div>
-      </div>
-      <div class="ch-tab" id="ch-t2">
-        <span class="ch-num">2</span><span class="ch-label">Plan G vs N</span>
-        <div class="ch-fill" id="ch-f2"></div>
-        <div class="ch-label-on" id="ch-o2"><span class="ch-num">2</span>Plan G vs N</div>
-      </div>
-      <div class="ch-tab" id="ch-t3">
-        <span class="ch-num">3</span><span class="ch-label">High-Ded G</span>
-        <div class="ch-fill" id="ch-f3"></div>
-        <div class="ch-label-on" id="ch-o3"><span class="ch-num">3</span>High-Ded G</div>
-      </div>
-      <div class="ch-tab" id="ch-t4">
-        <span class="ch-num">4</span><span class="ch-label">Carrier Myth</span>
-        <div class="ch-fill" id="ch-f4"></div>
-        <div class="ch-label-on" id="ch-o4"><span class="ch-num">4</span>Carrier Myth</div>
-      </div>
-      <div class="ch-tab" id="ch-t5">
-        <span class="ch-num">5</span><span class="ch-label">Action Plan</span>
-        <div class="ch-fill" id="ch-f5"></div>
-        <div class="ch-label-on" id="ch-o5"><span class="ch-num">5</span>Action Plan</div>
-      </div>
+      <div class="ch-tab"><div class="ch-lab"><span class="ch-num">1</span>Shared Freedom</div><div class="ch-fill" id="ch-f1"><div class="ch-lab"><span class="ch-num">1</span>Shared Freedom</div></div><div class="ch-ring" id="ch-r1"></div></div>
+      <div class="ch-tab"><div class="ch-lab"><span class="ch-num">2</span>Plan G vs N</div><div class="ch-fill" id="ch-f2"><div class="ch-lab"><span class="ch-num">2</span>Plan G vs N</div></div><div class="ch-ring" id="ch-r2"></div></div>
+      <div class="ch-tab"><div class="ch-lab"><span class="ch-num">3</span>High-Ded G</div><div class="ch-fill" id="ch-f3"><div class="ch-lab"><span class="ch-num">3</span>High-Ded G</div></div><div class="ch-ring" id="ch-r3"></div></div>
+      <div class="ch-tab"><div class="ch-lab"><span class="ch-num">4</span>Carrier Myth</div><div class="ch-fill" id="ch-f4"><div class="ch-lab"><span class="ch-num">4</span>Carrier Myth</div></div><div class="ch-ring" id="ch-r4"></div></div>
+      <div class="ch-tab"><div class="ch-lab"><span class="ch-num">5</span>Action Plan</div><div class="ch-fill" id="ch-f5"><div class="ch-lab"><span class="ch-num">5</span>Action Plan</div></div><div class="ch-ring" id="ch-r5"></div></div>
     </div>
   </div>
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
-      // Brand strip and tab rail arrive with the hook, tabs stay idle until Chapter 1.
       tl.fromTo("#ch-brand", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.2);
       tl.fromTo("#ch-tabs", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.35);
 
-      // Chapter activation times = first word of each chapter in the VO.
-      const on = [38.46, 69.84, 132.34, 187.52, 218.42];
-      on.forEach((t, i) => {
-        const n = i + 1;
-        tl.fromTo("#ch-f" + n, { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "power3.out", transformOrigin: "0% 50%" }, t);
-        tl.fromTo("#ch-o" + n, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, t + 0.1);
-        tl.fromTo("#ch-t" + n, { scale: 1 }, { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, t);
-        if (i > 0) {
-          // previous chapter goes to a "done" state: dimmer gold
-          tl.to("#ch-f" + i, { opacity: 0.28, duration: 0.35, ease: "power2.inOut" }, t);
-          tl.to("#ch-o" + i, { opacity: 0, duration: 0.35, ease: "power2.inOut" }, t);
-        }
+      // Each section's bar fills linearly from its first word to the next section's first word.
+      const bounds = [38.46, 69.84, 132.34, 187.52, 218.42, 250.24];
+      for (let i = 0; i < 5; i++) {
+        const n = i + 1, a = bounds[i], b = bounds[i + 1];
+        tl.fromTo("#ch-f" + n, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: b - a, ease: "none" }, a);
+        tl.fromTo("#ch-r" + n, { opacity: 0 }, { opacity: 1, duration: 0.3 }, a);
+        if (n < 5) tl.to("#ch-r" + n, { opacity: 0, duration: 0.3 }, b);
+        // completed section: soft gold bar, light label stays readable
+        if (n < 5) tl.to("#ch-f" + n, { opacity: 0.35, duration: 0.3 }, b);
+        if (n < 5) tl.to("#ch-f" + n + " .ch-lab", { opacity: 0, duration: 0.3 }, b);
+      }
+
+      // "Now comparing" badge — swaps on the word that puts a plan on the table.
+      const states = [
+        ["#ch-bv0", 0.4],
+        ["#ch-bv1", 69.84], // "Let us start with Standard Plan G"
+        ["#ch-bv2", 99.62], // "Next is Plan N"
+        ["#ch-bv3", 132.34], // "Now let us look at High Deductible Plan G"
+        ["#ch-bv4", 187.52], // "the biggest myth in Medicare"
+        ["#ch-bv5", 218.42], // "compare three numbers"
+      ];
+      states.forEach(([sel, t], i) => {
+        tl.fromTo(sel, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, t);
+        if (i < states.length - 1) tl.to(sel, { opacity: 0, y: -10, duration: 0.25, ease: "power2.in" }, states[i + 1][1] - 0.2);
+        if (i > 0) tl.fromTo("#ch-badge", { scale: 1 }, { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1, ease: "power2.out" }, t);
       });
       tl.set({}, {}, 250.2);
       window.__timelines["chapters"] = tl;

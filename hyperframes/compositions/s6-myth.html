@@ -72,7 +72,7 @@
       top: 0;
       width: 788px;
       box-sizing: border-box;
-      padding: 26px 34px;
+      padding: 16px 26px;
       border-radius: 20px;
       background: rgba(60, 16, 16, 0.92);
       border: 2px solid #e5534b;
@@ -94,9 +94,9 @@
       display: inline-block;
       font-family: Montserrat, sans-serif;
       font-weight: 700;
-      font-size: 32px;
+      font-size: 24px;
       line-height: 1.25;
-      margin-top: 14px;
+      margin-top: 8px;
       color: #ffd6d2;
     }
     #s6-strike {
@@ -111,10 +111,10 @@
     #s6-fact {
       position: absolute;
       left: 0;
-      top: 186px;
+      top: 120px;
       width: 788px;
       box-sizing: border-box;
-      padding: 26px 34px;
+      padding: 16px 26px;
       border-radius: 20px;
       background: rgba(19, 40, 77, 0.96);
       border: 2px solid #3dbe7a;
@@ -123,28 +123,49 @@
       background: #3dbe7a;
       color: #08241a;
     }
-    #s6-fact-a {
-      font-family: Montserrat, sans-serif;
-      font-weight: 700;
-      font-size: 30px;
-      margin-top: 14px;
-    }
-    #s6-fact-b {
+    #s6-fact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
       font-family: Montserrat, sans-serif;
       font-weight: 800;
-      font-size: 36px;
-      margin-top: 6px;
+      font-size: 22px;
+      white-space: nowrap;
+    }
+    #s6-fact-a {
+      font-weight: 700;
+      color: #c9d1df;
+    }
+    #s6-chart {
+      position: absolute;
+      left: 0;
+      top: 236px;
+      width: 788px;
+      height: 456px;
+      box-sizing: border-box;
+      border-radius: 20px;
+      background: rgba(19, 40, 77, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 20px;
+    }
+    .s6-ptitle {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: #8fa0bd;
+      text-transform: uppercase;
     }
     #s6-stamp {
       display: inline-block;
-      margin-left: 12px;
-      padding: 2px 16px;
+      margin-left: 6px;
+      padding: 0 12px;
       border: 5px solid #e5534b;
       border-radius: 10px;
       color: #ff6b61;
       font-family: Montserrat, sans-serif;
       font-weight: 800;
-      font-size: 40px;
+      font-size: 26px;
       letter-spacing: 0.08em;
     }
     /* Flowchart */
@@ -204,7 +225,7 @@
     #s6-foot {
       position: absolute;
       left: 0;
-      top: 640px;
+      top: 702px;
       width: 788px;
       text-align: center;
       font-size: 17px;
@@ -231,19 +252,38 @@
       </div>
       <div id="s6-fact">
         <div class="s6-lbl">FACT</div>
-        <div id="s6-fact-a">Plans are standardized —</div>
-        <div id="s6-fact-b">Insurance companies are <span id="s6-stamp">NOT</span></div>
+        <div id="s6-fact-row"><span id="s6-fact-a">Plans are standardized —</span><span id="s6-fact-b">insurance companies are <span id="s6-stamp">NOT</span></span></div>
       </div>
 
-      <div id="s6-flow">
-        <div class="s6-node" id="s6-n1"><small>STEP 1</small>Artificially low intro rate</div>
-        <div class="s6-arrow" id="s6-a1">➔</div>
-        <div class="s6-node" id="s6-n2"><small>STEP 2</small>Steep rate hikes at age 72–78</div>
-        <div class="s6-arrow" id="s6-a2">➔</div>
-        <div class="s6-node" id="s6-n3">
-          <svg id="s6-lock" viewBox="0 0 34 40"><path d="M8 17V11a9 9 0 0 1 18 0v6" fill="none" stroke="#ff8a80" stroke-width="4" /><rect x="2" y="17" width="30" height="22" rx="4" fill="#ff8a80" /></svg>
-          Medical underwriting blocks switching
-        </div>
+      <div id="s6-chart">
+        <div class="s6-ptitle">The teaser-rate trap · illustrative</div>
+        <svg width="748" height="400" viewBox="0 0 748 400" style="position: absolute; left: 20px; top: 40px">
+          <rect id="s6-band" x="373" y="20" width="260" height="320" fill="rgba(242,169,59,0.12)" />
+          <text id="s6-bandlbl" x="503" y="38" fill="#f2b95a" font-size="15" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">AGES 72–78</text>
+          <line x1="70" y1="340" x2="726" y2="340" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+          <line x1="70" y1="20" x2="70" y2="340" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+          <text x="26" y="180" fill="#8fa0bd" font-size="13" font-weight="700" font-family="Inter, sans-serif" text-anchor="middle" transform="rotate(-90 26 180)">PREMIUM</text>
+          <g fill="#a9b4c8" font-size="15" font-weight="700" font-family="Inter, sans-serif" text-anchor="middle">
+            <text x="70" y="364">65</text><text x="287" y="364">70</text><text x="503" y="364">75</text><text x="720" y="364">80</text>
+          </g>
+          <path id="s6-lineB" pathLength="1" d="M70 262 C 287 252, 503 236, 720 214" fill="none" stroke="#3dbe7a" stroke-width="6" stroke-linecap="round" />
+          <path id="s6-lineA1" pathLength="1" d="M70 300 C 157 298, 243 294, 330 286" fill="none" stroke="#e5534b" stroke-width="6" stroke-linecap="round" />
+          <path id="s6-lineA2" pathLength="1" d="M330 286 C 417 250, 503 150, 633 70 L 720 46" fill="none" stroke="#e5534b" stroke-width="6" stroke-linecap="round" />
+          <g id="s6-cheap"><rect x="78" y="306" width="150" height="26" rx="6" fill="#e5534b" /><text x="153" y="324" fill="#fff" font-size="14" font-weight="900" font-family="Inter, sans-serif" text-anchor="middle">Carrier A: cheap at 65</text></g>
+          <g id="s6-lblB"><text x="720" y="240" fill="#7ee2a8" font-size="15" font-weight="900" font-family="Inter, sans-serif" text-anchor="end">Carrier B: steady</text></g>
+          <g id="s6-spike"><text x="300" y="120" fill="#ff8a80" font-size="16" font-weight="900" font-family="Inter, sans-serif" text-anchor="start">Steep rate hikes</text></g>
+          <!-- switch attempt, blocked by the underwriting wall -->
+          <path id="s6-try" d="M503 150 C 529 175, 542 195, 547 205" fill="none" stroke="#f5f1e6" stroke-width="3" stroke-dasharray="6 6" />
+          <g id="s6-wall">
+            <rect x="547" y="96" width="16" height="244" rx="4" fill="#e5534b" />
+            <rect x="566" y="120" width="178" height="96" rx="12" fill="#3c1010" stroke="#e5534b" stroke-width="3" />
+            <g transform="translate(595 138)"><path d="M6 18 V11 a9 9 0 0 1 18 0 V18" fill="none" stroke="#ff8a80" stroke-width="5" /><rect x="0" y="17" width="30" height="24" rx="4" fill="#ff8a80" /></g>
+            <text x="635" y="150" fill="#ffd6d2" font-size="15" font-weight="900" font-family="Inter, sans-serif">Medical</text>
+            <text x="635" y="170" fill="#ffd6d2" font-size="15" font-weight="900" font-family="Inter, sans-serif">underwriting</text>
+            <text x="591" y="200" fill="#ffd6d2" font-size="15" font-weight="900" font-family="Inter, sans-serif">blocks switching</text>
+          </g>
+          <g id="s6-x"><path d="M533 192 l 16 16 m 0 -16 l -16 16" stroke="#ff6b61" stroke-width="5" stroke-linecap="round" /></g>
+        </svg>
       </div>
       <div id="s6-foot">Medical underwriting rules for switching Medigap carriers vary by state.</div>
     </div>
@@ -280,14 +320,20 @@
       tl.fromTo("#s6-stamp", { opacity: 0, scale: 2.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -6, duration: 0.22, ease: "power4.in" }, at(201.98));
       tl.fromTo("#s6-fact", { x: 0 }, { x: 6, duration: 0.05, yoyo: true, repeat: 3, ease: "none" }, at(202.2));
 
-      // Flowchart (202.98 →)
-      tl.fromTo("#s6-n1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(203.86)); // "artificially low"
-      pop("#s6-a1", 208.7);
-      tl.fromTo("#s6-n2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(209.08)); // "steep rate increases"
-      tl.fromTo("#s6-n2", { borderColor: "rgba(255,255,255,0.16)" }, { borderColor: "#f2a93b", duration: 0.3 }, at(211.78)); // "72 or 78"
-      pop("#s6-a2", 213.6);
-      tl.fromTo("#s6-n3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, at(214.4)); // "medical underwriting"
-      tl.fromTo("#s6-lock", { scale: 1.5, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" }, at(214.6));
+      // Teaser-rate trap curve (202.98 →)
+      const draw = (sel, abs, d) => tl.fromTo(sel, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, at(abs));
+      tl.fromTo("#s6-chart", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, at(202.98));
+      tl.set(["#s6-band", "#s6-bandlbl", "#s6-cheap", "#s6-lblB", "#s6-spike", "#s6-try", "#s6-wall", "#s6-x"], { opacity: 0 }, 0);
+      draw("#s6-lineB", 203.4, 2.2);
+      draw("#s6-lineA1", 203.86, 1.2); // "artificially low"
+      tl.fromTo("#s6-cheap", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3 }, at(204.6));
+      tl.fromTo("#s6-lblB", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(205.6));
+      draw("#s6-lineA2", 209.08, 1.4); // "steep rate increases later"
+      tl.fromTo("#s6-spike", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(209.9));
+      tl.fromTo(["#s6-band", "#s6-bandlbl"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(211.78)); // "72 or 78"
+      tl.fromTo("#s6-try", { opacity: 1, strokeDashoffset: 60 }, { opacity: 1, strokeDashoffset: 0, duration: 0.6, ease: "none" }, at(213.4)); // tries to switch
+      tl.fromTo("#s6-wall", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3, ease: "bounce.out" }, at(214.4)); // "medical underwriting"
+      tl.fromTo("#s6-x", { opacity: 0, scale: 0, svgOrigin: "541 200" }, { opacity: 1, scale: 1, svgOrigin: "541 200", duration: 0.3, ease: "back.out(3)" }, at(216.6)); // "prevent you from switching"
       tl.fromTo("#s6-foot", { opacity: 0 }, { opacity: 1, duration: 0.4 }, at(215.5)); // "in most states"
 
       tl.to(".s6-stage", { opacity: 0, duration: 0.35, ease: "power2.in" }, at(217.95));

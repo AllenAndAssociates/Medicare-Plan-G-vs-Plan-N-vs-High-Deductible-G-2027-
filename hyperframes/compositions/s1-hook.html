@@ -79,6 +79,11 @@
       font-family: Inter, sans-serif;
       font-weight: 400;
     }
+    .s1-foot {
+      font-size: 13px;
+      color: #7f8aa0;
+      text-align: right;
+    }
     #s1-auth {
       top: 30px;
       padding: 40px 44px;
@@ -176,19 +181,36 @@
   </style>
   <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
     <div class="s1-stage">
-      <!-- Hook card A -->
-      <div class="s1-card" id="s1-hookA" style="top: 20px">
-        <div class="s1-eyebrow">Question 1</div>
-        <div class="s1-row">
-          <div class="s1-side">Same Plan G<br />Benefits</div>
-          <div class="s1-op" id="s1-neq">≠</div>
-          <div class="s1-side">
-            Same<br /><span class="s1-mark">Long-Term Cost<span class="s1-hl" id="s1-hlA"></span></span>
-          </div>
-        </div>
+      <!-- Hook A: two-line cost-over-time graph -->
+      <div class="s1-card" id="s1-hookA" style="top: 0; padding: 22px 26px 14px">
+        <div class="s1-eyebrow" style="margin-bottom: 4px">Same Plan G benefits · different carriers</div>
+        <svg id="s1-graph" width="736" height="300" viewBox="0 0 736 300">
+          <g stroke="rgba(255,255,255,0.08)" stroke-width="1">
+            <line x1="60" y1="40" x2="720" y2="40" /><line x1="60" y1="110" x2="720" y2="110" /><line x1="60" y1="180" x2="720" y2="180" />
+          </g>
+          <line x1="60" y1="250" x2="720" y2="250" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+          <line x1="60" y1="20" x2="60" y2="250" stroke="rgba(255,255,255,0.35)" stroke-width="2" />
+          <text x="60" y="278" fill="#a9b4c8" font-size="17" font-family="Inter, sans-serif" font-weight="700" text-anchor="middle">Age 65</text>
+          <text x="390" y="278" fill="#a9b4c8" font-size="17" font-family="Inter, sans-serif" font-weight="700" text-anchor="middle">70</text>
+          <text x="720" y="278" fill="#a9b4c8" font-size="17" font-family="Inter, sans-serif" font-weight="700" text-anchor="middle">75</text>
+          <text x="20" y="140" fill="#8fa0bd" font-size="14" font-family="Inter, sans-serif" font-weight="700" text-anchor="middle" transform="rotate(-90 20 140)">MONTHLY PREMIUM</text>
+          <path id="s1-gap" d="M60 232 C 260 226, 420 200, 560 172 L 720 150 L 720 40 C 620 70, 520 120, 420 170 C 300 215, 180 228, 60 232 Z" fill="rgba(229,83,75,0.22)" />
+          <path id="s1-lineB" pathLength="1" d="M60 232 C 260 226, 420 200, 560 172 L 720 150" fill="none" stroke="#3dbe7a" stroke-width="6" stroke-linecap="round" />
+          <path id="s1-lineA" pathLength="1" d="M60 232 C 180 228, 300 215, 420 170 C 520 120, 620 70, 720 40" fill="none" stroke="#e5534b" stroke-width="6" stroke-linecap="round" />
+          <circle id="s1-start" cx="60" cy="232" r="10" fill="#d4af5a" />
+          <g id="s1-startlbl"><rect x="78" y="186" width="182" height="34" rx="8" fill="#d4af5a" /><text x="169" y="209" fill="#0b1a33" font-size="17" font-family="Inter, sans-serif" font-weight="900" text-anchor="middle">Same price at 65</text></g>
+          <g id="s1-lblA"><text x="706" y="30" fill="#ff8a80" font-size="17" font-family="Inter, sans-serif" font-weight="900" text-anchor="end">Carrier A</text></g>
+          <g id="s1-lblB"><text x="706" y="180" fill="#7ee2a8" font-size="17" font-family="Inter, sans-serif" font-weight="900" text-anchor="end">Carrier B</text></g>
+          <g id="s1-brk">
+            <path d="M734 44 L 734 146" stroke="#f5f1e6" stroke-width="3" fill="none" />
+            <path d="M728 44 L 734 44 M 728 146 L 734 146" stroke="#f5f1e6" stroke-width="3" />
+          </g>
+          <g id="s1-gaplbl"><rect x="392" y="56" width="236" height="44" rx="10" fill="#e5534b" /><text x="510" y="85" fill="#fff" font-size="21" font-family="Montserrat, sans-serif" font-weight="800" text-anchor="middle">Thousands more</text></g>
+        </svg>
+        <div class="s1-foot">Illustrative example. Not actual carrier rates.</div>
       </div>
       <!-- Hook card B -->
-      <div class="s1-card" id="s1-hookB" style="top: 330px">
+      <div class="s1-card" id="s1-hookB" style="top: 400px">
         <div class="s1-eyebrow">Question 2</div>
         <div class="s1-row">
           <div class="s1-side">
@@ -233,8 +255,15 @@
 
       // "What if two Medicare Supplement Plan G policies..." (0.00)
       cardIn("#s1-hookA", 0.3);
-      pop("#s1-neq", 4.4); // "exact same"
-      swipe("#s1-hlA", 8.28); // "thousands more"
+      const draw = (sel, t, d) => tl.fromTo(sel, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDasharray: 1, strokeDashoffset: 0, duration: d, ease: "power1.inOut" }, t);
+      tl.fromTo("#s1-start", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 2.4); // "Plan G policies"
+      tl.fromTo("#s1-startlbl", { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35 }, 4.46); // "exact same"
+      draw("#s1-lineB", 5.3, 3.2);
+      draw("#s1-lineA", 5.3, 3.2); // "yet one ends up costing you..."
+      tl.fromTo(["#s1-lblA", "#s1-lblB"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.3);
+      tl.fromTo("#s1-gap", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 8.28); // "thousands more"
+      tl.fromTo("#s1-brk", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.4);
+      tl.fromTo("#s1-gaplbl", { opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 8.5);
 
       // "Or what if a supplement plan with a $3,050 deductible..." (10.40)
       cardIn("#s1-hookB", 10.4);
