@@ -24,7 +24,7 @@ npx hyperframes render --quality delivery -o out.mp4
 ```
 
 Editable variables: `phone`, `site` and `disclaimer` are in s7. `brandName`, `gold` and `navy` are on the root.
-Logo: s7 shows a text wordmark (`A&A` monogram + "Allen & Associates"). To use the official logo, put the file in `assets/` and swap it into `#s7-mono` / `#s7-word`.
+Logo: `assets/aa-logo.png` appears on a white plate in the s1 authority card and the s7 end card.
 
 ## Scene timing (actual VO)
 

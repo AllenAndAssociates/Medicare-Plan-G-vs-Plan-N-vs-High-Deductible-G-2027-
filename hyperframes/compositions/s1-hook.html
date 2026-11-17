@@ -85,6 +85,19 @@
       background: linear-gradient(135deg, #13284d 0%, #0e1f3d 100%);
       border: 2px solid rgba(212, 175, 90, 0.55);
     }
+    #s1-plate {
+      position: absolute;
+      right: 36px;
+      top: 34px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+    #s1-logo {
+      display: block;
+      height: 74px;
+      width: auto;
+    }
     #s1-name {
       font-family: Montserrat, sans-serif;
       font-weight: 800;
@@ -192,6 +205,7 @@
 
       <!-- Authority card -->
       <div class="s1-card" id="s1-auth">
+        <div id="s1-plate"><img id="s1-logo" src="assets/aa-logo.png" alt="Allen &amp; Associates Insurance Agency" /></div>
         <div class="s1-eyebrow">Your Guide</div>
         <div id="s1-name">Arric Allen</div>
         <div id="s1-title">Principal, Allen &amp; Associates</div>
@@ -229,6 +243,7 @@
       // Hooks clear for the authority card: "I am Arric Allen" (19.62)
       tl.to(["#s1-hookA", "#s1-hookB"], { opacity: 0, y: -30, duration: 0.35, ease: "power2.in", stagger: 0.06 }, 19.1);
       tl.fromTo("#s1-auth", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 19.55);
+      tl.fromTo("#s1-plate", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 20.86); // "Allen & Associates"
       pop("#s1-since", 22.46); // "since 1994"
 
       // "Today, we are comparing Plan G, Plan N, and High-Deductible Plan G for 2027"

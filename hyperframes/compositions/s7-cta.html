@@ -111,6 +111,35 @@
       gap: 18px;
       margin-top: 12px;
     }
+    #s7-plate {
+      flex: 0 0 auto;
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+    #s7-logo {
+      display: block;
+      height: 96px;
+      width: auto;
+    }
+    #s7-since {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.22em;
+      color: #d4af5a;
+      text-align: center;
+      line-height: 1.1;
+    }
+    #s7-since b {
+      display: block;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 34px;
+      letter-spacing: 0.02em;
+      color: #f5f1e6;
+    }
     #s7-mono {
       flex: 0 0 76px;
       height: 76px;
@@ -218,8 +247,8 @@
         <div class="s7-opt" id="s7-o2">
           <div class="s7-ok">Option 2 · Compare carrier rate histories with a consultant</div>
           <div id="s7-brand">
-            <div id="s7-mono">A&amp;A</div>
-            <div id="s7-word">Allen &amp; Associates<small>SINCE 1994</small></div>
+            <div id="s7-plate"><img id="s7-logo" src="assets/aa-logo.png" alt="Allen &amp; Associates Insurance Agency" /></div>
+            <div id="s7-since">SINCE<b>1994</b></div>
           </div>
           <div id="s7-o2-sub">Speak with a licensed consultant about carriers in your state.</div>
           <div class="s7-contact">
@@ -256,6 +285,8 @@
 
       // "And if you would like to speak directly with a licensed consultant" (235.14)
       tl.fromTo("#s7-o2", { opacity: 0, y: 40, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "back.out(1.4)" }, at(235.14));
+      tl.fromTo("#s7-plate", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(235.5));
+      tl.fromTo("#s7-since", { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.4, ease: "power2.out" }, at(236.0));
       pop("#s7-phone", 242.76); // "800-324-9986"
       pop("#s7-site", 247.18); // "allenandassociates.agency"
       tl.fromTo("#s7-cursor", { opacity: 0, x: 40, y: 30 }, { opacity: 1, x: 0, y: 0, duration: 0.5, ease: "power2.out" }, at(247.5));
